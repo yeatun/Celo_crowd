@@ -16,6 +16,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@fontsource/space-grotesk": "^4.3.0",
+    "@syncfusion/ej2-react-calendars": "^19.3.44",
     "dotenv": "^8.2.0",
     "framer-motion": "^4",
     "fs-extra": "^10.0.0",

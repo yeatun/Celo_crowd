@@ -118,7 +118,7 @@ export default function NewRequest() {
                       }}
                       step="any"
                     />{" "}
-                    <InputRightAddon children="ETH" />
+                    <InputRightAddon children="CELO" />
                   </InputGroup>
                   {inUSD ? (
                     <FormHelperText>

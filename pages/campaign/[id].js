@@ -292,7 +292,7 @@ export default function CampaignSingle({
                       <Text as="span" fontWeight={"bold"}>
                         {balance > 0
                           ? web3.utils.fromWei(balance, "ether")
-                          : "0, Become a Donor 😄"}
+                          : "0,  Become a Donor"}
                       </Text>
                       <Text
                         as="span"
@@ -361,7 +361,7 @@ export default function CampaignSingle({
                           step="any"
                           min="0"
                         />{" "}
-                        <InputRightAddon children="ETH" />
+                        <InputRightAddon children="CELO" />
                       </InputGroup>
                       {amountInUSD ? (
                         <FormHelperText>
@@ -415,6 +415,32 @@ export default function CampaignSingle({
                 p={{ base: 4, sm: 6, md: 8 }}
                 spacing={4}
               >
+                <NextLink href={`/campaign/${id}/refund`}>
+                  <Button
+                    fontFamily={"heading"}
+                    w={"full"}
+                    bgGradient="linear(to-r, teal.400,green.400)"
+                    color={"white"}
+                    _hover={{
+                      bgGradient: "linear(to-r, teal.400,blue.400)",
+                      boxShadow: "xl",
+                    }}
+                  >
+                    Request Your Refund
+                  </Button>
+                </NextLink>
+                <Text fontSize={"sm"}>
+                  * You can request a refund if the target of the campaign
+                  doesn't meet the scheduled time.
+                </Text>
+              </Stack>
+              <Stack
+                bg={useColorModeValue("white", "gray.700")}
+                boxShadow={"lg"}
+                rounded={"xl"}
+                p={{ base: 4, sm: 6, md: 8 }}
+                spacing={4}
+              >
                 <NextLink href={`/campaign/${id}/requests`}>
                   <Button
                     fontFamily={"heading"}
@@ -431,7 +457,7 @@ export default function CampaignSingle({
                 </NextLink>
                 <Text fontSize={"sm"}>
                   * You can see where these funds are being used & if you have
-                  contributed you can also approve those Withdrawal Requests :)
+                  contributed you can also approve those Withdrawal Requests.
                 </Text>
               </Stack>
             </Stack>
