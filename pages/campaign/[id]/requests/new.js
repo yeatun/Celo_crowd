@@ -62,7 +62,8 @@ export default function NewRequest() {
           web3.utils.toWei(data.value, "ether"),
           data.recipient
         )
-        .send({ from: accounts[0] });
+        .send({ from: accounts[0],
+        gas: 210000 });
 
       router.push(`/campaign/${id}/requests`);
     } catch (err) {

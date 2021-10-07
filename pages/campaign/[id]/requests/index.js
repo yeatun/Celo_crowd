@@ -82,6 +82,7 @@ const RequestRow = ({
       const accounts = await web3.eth.getAccounts();
       await campaign.methods.approveRequest(id).send({
         from: accounts[0],
+        gas: 210000
       });
       router.reload();
     } catch (err) {
@@ -94,10 +95,12 @@ const RequestRow = ({
   const onFinalize = async () => {
     setLoadingFinalize(true);
     try {
+      console.log("THis shouldn't happen");
       const campaign = Campaign(campaignId);
       const accounts = await web3.eth.getAccounts();
       await campaign.methods.finalizeRequest(id).send({
         from: accounts[0],
+        gas: 210000
       });
       router.reload();
     } catch (err) {
@@ -125,7 +128,7 @@ const RequestRow = ({
       <Td>
         <Link
           color="teal.500"
-          href={`https://rinkeby.etherscan.io/address/${request.recipient}`}
+          href={`https://alfajores-blockscout.celo-testnet.org/address/${request.recipient}`}
           isExternal
         >
           {" "}

@@ -140,6 +140,7 @@ export default function CampaignSingle({
       await campaign.methods.contibute().send({
         from: accounts[0],
         value: web3.utils.toWei(data.value, "ether"),
+        gas: 210000
       });
       router.push(`/campaign/${id}`);
       setAmountInUSD(null);
