@@ -274,11 +274,7 @@ export default function Refund ({
     try {
       const accounts = await web3.eth.getAccounts()
       await campaign.methods
-        .createRequest(
-          data.description,
-          web3.utils.toWei(data.value, 'ether'),
-          data.recipient
-        )
+        .refund()
         .send({ from: accounts[0], gas: 210000 })
 
       router.push(`/campaign/${id}/requests`)

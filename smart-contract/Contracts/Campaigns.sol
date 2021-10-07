@@ -4,6 +4,7 @@ contract CampaignFactory {
     address[] public deployedCampaigns;
 
     function createCampaign(uint minimum,string name,string description,string image,uint target, uint deadline) public {
+        require(now < deadline, "Deadline can't be in the past");
         address newCampaign = new Campaign(minimum, msg.sender,name,description,image,target, deadline);
         deployedCampaigns.push(newCampaign);
     }
@@ -68,6 +69,11 @@ contract Campaign {
       _;
   }
 
+modifier notManager() {
+      require(msg.sender != manager, "Only allowed for campaign creator");
+      _;
+  }
+
     modifier isContributer() {
         require(approvers[msg.sender], "Not a contributer");
         _;
@@ -92,12 +98,12 @@ contract Campaign {
       requests.push(newRequest);
   }
 
-  function refund() public isContributer timeThresholdPast{
-      require(contributerAmount[msg.sender] > address(this).balance, "Fund already spent.");
+  function refund() public isContributer timeThresholdPast notManager{
+      require(contributerAmount[msg.sender] >= address(this).balance, "Fund already spent.");
       msg.sender.transfer(contributerAmount[msg.sender]);
   }
 
-  function approveRequest(uint index) public isContributer timeThresholdNotPast {
+  function approveRequest(uint index) public isContributer timeThresholdNotPast notManager {
       require(!requests[index].approvals[msg.sender]);
       requests[index].approvals[msg.sender] = true;
       requests[index].approvalCount++;
@@ -115,7 +121,6 @@ contract Campaign {
        
       requests[index].recipient.transfer(requests[index].value);
       requests[index].complete = true;
-
   }
 
 

@@ -65,13 +65,17 @@ export default function NewCampaign () {
     )
     try {
       const accounts = await web3.eth.getAccounts()
+      console.log(data);
+      const getUnixTimeUtc =  Math.round(new Date(data.campaignLength).getTime() / 1000)
+      console.log(getUnixTimeUtc);
       await factory.methods
         .createCampaign(
           web3.utils.toWei(data.minimumContribution, 'ether'),
           data.campaignName,
           data.description,
           data.imageUrl,
-          web3.utils.toWei(data.target, 'ether')
+          web3.utils.toWei(data.target, 'ether'),
+          getUnixTimeUtc    
         )
         .send({
           from: accounts[0]
@@ -153,7 +157,9 @@ export default function NewCampaign () {
                 </FormControl>
                 <FormControl id='campaignLength'>
                   <FormLabel>Campaign Length</FormLabel>
-                  <DateTimePickerComponent value={dateTime} ></DateTimePickerComponent>
+                  <DateTimePickerComponent value={dateTime} 
+                  {...register('campaignLength', { required: true })}
+                  ></DateTimePickerComponent>
                 </FormControl>
                 <FormControl id='target'>
                   <FormLabel>Target Amount</FormLabel>
