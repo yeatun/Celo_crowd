@@ -308,7 +308,7 @@ export default function Requests({
               <Text as="span" fontWeight={"bold"} fontSize="lg">
                 {balance > 0
                   ? web3.utils.fromWei(balance, "ether")
-                  : "0, Become a Donor 😄"}
+                  : "0, Become a Donor"}
               </Text>
               <Text
                 as="span"
