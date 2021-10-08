@@ -301,7 +301,7 @@ export default function CampaignSingle({
                         fontWeight={"bold"}
                       >
                         {" "}
-                        ETH
+                      CELO
                       </Text>
                       <Text
                         as="span"

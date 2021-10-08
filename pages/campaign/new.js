@@ -78,7 +78,8 @@ export default function NewCampaign () {
           getUnixTimeUtc    
         )
         .send({
-          from: accounts[0]
+          from: accounts[0],
+          gas: 21000
         })
 
       router.push('/')

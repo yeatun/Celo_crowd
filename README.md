@@ -1,4 +1,4 @@
-Celo Crowdfund : Crowdfunding Platform Powered by Ethereum Blockchain
+BlockchainStarter : Crowdfunding Platform Powered by Ethereum Blockchain
 
 The Platform is live on Rinkeby Test Network and available to use at : [celo-crowd.vercel.app](https://celo-crowd.vercel.app/)
 

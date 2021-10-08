@@ -76,14 +76,14 @@ export default function Footer() {
               zIndex: -1,
             }}
           >
-            <NextLink href="/">Celo Crowdfund</NextLink>
+            <NextLink href="/">BlockchainStarter</NextLink>
           </Box>
         </Heading>
         {/* <Stack direction={"row"} spacing={6}>
           <NextLink href="/">Home</NextLink>
           <Link
             href={
-              "https://github.com/harsh242/celocrowdfund-crowdfunding-in-blockchain"
+              "https://github.com/harsh242/blockchainstarter-crowdfunding-in-blockchain"
             }
             isExternal
           >

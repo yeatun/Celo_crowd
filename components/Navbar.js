@@ -73,7 +73,7 @@ export default function NavBar() {
                   zIndex: -1,
                 }}
               >
-                <NextLink href="/">Celo Crowdfund</NextLink>
+                <NextLink href="/">BlockchainStarter</NextLink>
               </Box>
             </Heading>
           </Flex>
