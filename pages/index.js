@@ -166,7 +166,7 @@ function CampaignCard({
                   fontWeight={"bold"}
                 >
                   {" "}
-                  ETH
+                  CUSD
                 </Text>
                 <Text
                   as="span"
@@ -325,7 +325,7 @@ export default function Home({ campaigns }) {
               icon={<Icon as={FcMoneyTransfer} w={10} h={10} />}
               title={"Request and Withdraw Funds"}
               text={
-                "The funds raised can be withdrawn directly to the recipient when 50% of the contributors approve of the Withdrawal Request."
+                "If the campaign receives the targeted funds within the time frame, the funds raised can be withdrawn directly to the recipient."
               }
             />
           </SimpleGrid>

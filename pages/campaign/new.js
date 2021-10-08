@@ -79,7 +79,7 @@ export default function NewCampaign () {
         )
         .send({
           from: accounts[0],
-          gas: 21000
+          gas: 50000
         })
 
       router.push('/')
@@ -126,13 +126,8 @@ export default function NewCampaign () {
                         setMinContriInUSD(Math.abs(e.target.value))
                       }}
                     />{' '}
-                    <InputRightAddon children='CELO' />
+                    <InputRightAddon children='CUSD' />
                   </InputGroup>
-                  {minContriInUSD ? (
-                    <FormHelperText>
-                      ~$ {getETHPriceInUSD(ETHPrice, minContriInUSD)}
-                    </FormHelperText>
-                  ) : null}
                 </FormControl>
                 <FormControl id='campaignName'>
                   <FormLabel>Campaign Name</FormLabel>
@@ -174,13 +169,8 @@ export default function NewCampaign () {
                         setTargetInUSD(Math.abs(e.target.value))
                       }}
                     />
-                    <InputRightAddon children='CELO' />
+                    <InputRightAddon children='CUSD' />
                   </InputGroup>
-                  {targetInUSD ? (
-                    <FormHelperText>
-                      ~$ {getETHPriceInUSD(ETHPrice, targetInUSD)}
-                    </FormHelperText>
-                  ) : null}
                 </FormControl>
 
                 {error ? (
