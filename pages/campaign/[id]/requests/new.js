@@ -106,7 +106,7 @@ export default function NewRequest() {
                   />
                 </FormControl>
                 <FormControl id="value">
-                  <FormLabel>Amount in Ether</FormLabel>
+                  <FormLabel>Amount in Celo</FormLabel>
                   <InputGroup>
                     {" "}
                     <Input
@@ -118,13 +118,8 @@ export default function NewRequest() {
                       }}
                       step="any"
                     />{" "}
-                    <InputRightAddon children="CELO" />
+                    <InputRightAddon children="CUSD" />
                   </InputGroup>
-                  {inUSD ? (
-                    <FormHelperText>
-                      ~$ {getETHPriceInUSD(ETHPrice, inUSD)}
-                    </FormHelperText>
-                  ) : null}
                 </FormControl>
 
                 <FormControl id="recipient">
