@@ -122,7 +122,7 @@ const RequestRow = ({
       <Td>{id} </Td>
       <Td>{request.description}</Td>
       <Td isNumeric>
-        {web3.utils.fromWei(request.value, "ether")}ETH ($
+        {web3.utils.fromWei(request.value, "ether")}CUSD ($
         {getWEIPriceInUSD(ETHPrice, request.value)})
       </Td>
       <Td>
@@ -318,7 +318,7 @@ export default function Requests({
                 fontSize="lg"
               >
                 {" "}
-                ETH
+                CUSD
               </Text>
               <Text
                 as="span"
