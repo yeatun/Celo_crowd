@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { ContractKitProvider } from '@celo-tools/use-contractkit';
+import { ContractKitProvider, NetworkNames } from '@celo-tools/use-contractkit';
 import '@celo-tools/use-contractkit/lib/styles.css';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -30,6 +30,13 @@ function MyApp({ Component, pageProps }) {
             name: 'Blockchain Starter',
             description: 'Make your dreams with the power of Celo',
             url: 'https://celo.org',
+          }}
+          nnetwork={{
+            name: NetworkNames.Alfajores,
+            rpcUrl: 'https://alfajores-forno.celo-testnet.org',
+            graphQl: 'https://alfajores-blockscout.celo-testnet.org/graphiql',
+            explorer: 'https://alfajores-blockscout.celo-testnet.org',
+            chainId: 44787,
           }}
         >
           <NavBar />

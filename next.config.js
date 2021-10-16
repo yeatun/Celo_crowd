@@ -1,22 +1,10 @@
 module.exports = {
-  webpack: (config, { webpack }) => {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      net: false,
-      child_process: false,
-      readline: false,
-    };
-    config.plugins.push(new webpack.IgnorePlugin(/^electron$/));
+  webpack5: true,
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false;
+      config.resolve.fallback.net = false;
+    }
     return config;
   },
-
-  async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/',
-      },
-    ];
-  },
-};
+}
