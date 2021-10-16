@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
-import { useWallet } from 'use-wallet'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { useWindowSize } from 'react-use'
@@ -40,7 +39,7 @@ import {
 import { InfoIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import NextLink from 'next/link'
 import Confetti from 'react-confetti'
-
+import { useContractKit } from '@celo-tools/use-contractkit';
 import web3 from '../../smart-contract/web3'
 import Campaign from '../../smart-contract/campaign'
 import factory from '../../smart-contract/factory'
@@ -128,7 +127,7 @@ export default function CampaignSingle ({
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState('')
-  const wallet = useWallet()
+  const { connect, address, destroy } = useContractKit();
   const router = useRouter()
   const { width, height } = useWindowSize()
   async function onSubmit (data) {
@@ -368,7 +367,7 @@ export default function CampaignSingle ({
                     ) : null}
 
                     <Stack spacing={10}>
-                      {wallet.status === 'connected' ? (
+                      {address ? (
                         <Button
                           fontFamily={'heading'}
                           mt={4}

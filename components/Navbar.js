@@ -14,14 +14,14 @@ import {
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
-import { useWallet } from "use-wallet";
+import { useContractKit } from '@celo-tools/use-contractkit';
 
 import NextLink from "next/link";
 import DarkModeSwitch from "./DarkModeSwitch";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 export default function NavBar() {
-  const wallet = useWallet();
+  const { connect, address, destroy } = useContractKit();
 
   return (
     <Box>
@@ -101,13 +101,13 @@ export default function NavBar() {
               <NextLink href="/#howitworks"> How it Works</NextLink>
             </Button>
 
-            {wallet.status === "connected" ? (
+            {address ? (
               <Menu>
                 <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {wallet.account.substr(0, 10) + "..."}
+                  {address}
                 </MenuButton>
                 <MenuList>
-                  <MenuItem onClick={() => wallet.reset()}>
+                  <MenuItem onClick={destroy}>
                     {" "}
                     Disconnect Wallet{" "}
                   </MenuItem>
@@ -125,7 +125,7 @@ export default function NavBar() {
                   _hover={{
                     bg: "teal.300",
                   }}
-                  onClick={() => wallet.connect()}
+                  onClick={connect}
                 >
                   Connect Wallet{" "}
                 </Button>

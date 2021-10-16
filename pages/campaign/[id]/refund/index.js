@@ -4,7 +4,6 @@ import NextLink from 'next/link'
 import NextImage from 'next/image'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { useWallet } from 'use-wallet'
 import { getETHPrice, getWEIPriceInUSD } from '../../../../lib/getETHPrice'
 import {
   Heading,
@@ -258,7 +257,6 @@ export default function Refund ({
   const campaign = Campaign(campaignId)
   const [error, setError] = useState('')
   const [inUSD, setInUSD] = useState()
-  const wallet = useWallet()
 
   const {
     handleSubmit,

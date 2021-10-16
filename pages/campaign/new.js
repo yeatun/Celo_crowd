@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import { useAsync } from 'react-use'
 import { useRouter } from 'next/router'
-import { useWallet } from 'use-wallet'
 import { useForm } from 'react-hook-form'
 import {
   Flex,
@@ -27,7 +26,7 @@ import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import NextLink from 'next/link'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 import { getETHPrice, getETHPriceInUSD } from '../../lib/getETHPrice'
-
+import { useContractKit } from '@celo-tools/use-contractkit';
 import factory from '../../smart-contract/factory'
 import web3 from '../../smart-contract/web3'
 
@@ -41,7 +40,7 @@ export default function NewCampaign () {
   })
   const router = useRouter()
   const [error, setError] = useState('')
-  const wallet = useWallet()
+  const { connect, address, destroy } = useContractKit();
   const [minContriInUSD, setMinContriInUSD] = useState()
   const [targetInUSD, setTargetInUSD] = useState()
   const [ETHPrice, setETHPrice] = useState(0)
@@ -78,8 +77,7 @@ export default function NewCampaign () {
           getUnixTimeUtc    
         )
         .send({
-          from: accounts[0],
-          gas: 50000
+          from: accounts[0]
         })
 
       router.push('/')
@@ -193,7 +191,7 @@ export default function NewCampaign () {
                   </Alert>
                 ) : null}
                 <Stack spacing={10}>
-                  {wallet.status === 'connected' ? (
+                  {address ? (
                     <Button
                       bg={'teal.400'}
                       color={'white'}
@@ -213,7 +211,7 @@ export default function NewCampaign () {
                         _hover={{
                           bg: 'teal.300'
                         }}
-                        onClick={() => wallet.connect()}
+                        onClick={connect}
                       >
                         Connect Wallet{' '}
                       </Button>
