@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import NextLink from 'next/link'
-import NextImage from 'next/image'
+import { useContractKit } from '@celo-tools/use-contractkit';
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { useWallet } from 'use-wallet'
 import { getETHPrice, getWEIPriceInUSD } from '../../../../lib/getETHPrice'
 import {
   Heading,
@@ -258,7 +257,7 @@ export default function Bet ({
   const campaign = Campaign(campaignId)
   const [error, setError] = useState('')
   const [inUSD, setInUSD] = useState()
-  const wallet = useWallet()
+  const { connect, address, destroy } = useContractKit();
 
   const {
     handleSubmit,

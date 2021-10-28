@@ -1,7 +1,6 @@
 import Head from "next/head";
 import NextLink from "next/link";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import { useWallet } from "use-wallet";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -28,6 +27,7 @@ import {
 import web3 from "../../../../smart-contract/web3";
 import Campaign from "../../../../smart-contract/campaign";
 import { useAsync } from "react-use";
+import { useContractKit } from '@celo-tools/use-contractkit';
 
 export default function NewRequest() {
   const router = useRouter();
@@ -42,7 +42,8 @@ export default function NewRequest() {
   const [error, setError] = useState("");
   const [inUSD, setInUSD] = useState();
   const [ETHPrice, setETHPrice] = useState(0);
-  const wallet = useWallet();
+  const { connect, address, destroy } = useContractKit();
+
   useAsync(async () => {
     try {
       const result = await getETHPrice();
@@ -150,7 +151,7 @@ export default function NewRequest() {
                   </Alert>
                 ) : null}
                 <Stack spacing={10}>
-                  {wallet.status === "connected" ? (
+                  {address ? (
                     <Button
                       bg={"teal.400"}
                       color={"white"}
@@ -170,7 +171,7 @@ export default function NewRequest() {
                         _hover={{
                           bg: "teal.300",
                         }}
-                        onClick={() => wallet.connect()}
+                        onClick={connect}
                       >
                         Connect Wallet{" "}
                       </Button>
