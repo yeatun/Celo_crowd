@@ -27,7 +27,8 @@ import NextLink from 'next/link'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 import { getETHPrice, getETHPriceInUSD } from '../../lib/getETHPrice'
 import { useContractKit } from '@celo-tools/use-contractkit'
-import CeloStarterByteCode from '../../smart-contract/build/CampaignABI.json'
+
+import CeloStarterByteCode from '../../smart-contract/build/CampaignFactoryABI.json'
 import dotenv from "dotenv"
 
 // LOAD ENV VAR
@@ -72,6 +73,7 @@ export default function NewCampaign () {
 
     try {
       await performActions(async (k) => {
+        console.log(k);
         const celoStarter = new k.web3.eth.Contract(CeloStarterByteCode, "0x40f3a4EBf95CE4A431cffA9803Fcb86f81Ff4ffD")
         console.log(
           k.web3.utils.toWei(data.minimumContribution, 'ether'),
@@ -81,17 +83,18 @@ export default function NewCampaign () {
           k.web3.utils.toWei(data.target, 'ether'),
           getUnixTimeUtc 
         )
-        await(
-          await celoStarter.methods.createCampaign(
+     
+        await celoStarter.methods.createCampaign(
             k.web3.utils.toWei(data.minimumContribution, 'ether'),
             data.campaignName,
             data.description,
             data.imageUrl,
             k.web3.utils.toWei(data.target, 'ether'),
             getUnixTimeUtc 
-          )
+          
         ).send({
           from: address,
+        
           gasLimit: '10000000',
           gasPrice: k.web3.utils.toWei('1', 'gwei')
         })
