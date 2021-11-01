@@ -3,7 +3,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { ContractKitProvider, NetworkNames } from '@celo-tools/use-contractkit';
 import '@celo-tools/use-contractkit/lib/styles.css';
 import NavBar from "../components/Navbar";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import "@fontsource/space-grotesk";
 import "@syncfusion/ej2-base/styles/material.css";
 import "@syncfusion/ej2-buttons/styles/material.css";
@@ -40,8 +40,8 @@ function MyApp({ Component, pageProps }) {
           }}
         >
           <NavBar />
-          <Component {...pageProps} />
-          <Footer />{" "}
+          {/* <Component {...pageProps} /> */}
+         {" "}
         </ContractKitProvider>
       </ChakraProvider>
     </>

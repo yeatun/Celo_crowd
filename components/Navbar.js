@@ -90,7 +90,7 @@ export default function NavBar() {
               variant={"link"}
               display={{ base: "none", md: "inline-flex" }}
             >
-              <NextLink href="/campaign/new">Create Campaign</NextLink>
+              {/* <NextLink href="/campaign/new">Create Campaign</NextLink> */}
             </Button>
             <Button
               fontSize={"md"}
@@ -98,7 +98,7 @@ export default function NavBar() {
               variant={"link"}
               display={{ base: "none", md: "inline-flex" }}
             >
-              <NextLink href="/#howitworks"> How it Works</NextLink>
+              {/* <NextLink href="/#howitworks"> How it Works</NextLink> */}
             </Button>
 
             {address ? (
