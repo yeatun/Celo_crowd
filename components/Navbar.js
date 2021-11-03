@@ -15,7 +15,7 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 import { useContractKit } from '@celo-tools/use-contractkit';
-
+import { createBreakpoints } from "@chakra-ui/theme-tools"
 import NextLink from "next/link";
 import DarkModeSwitch from "./DarkModeSwitch";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -23,6 +23,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 export default function NavBar() {
   const { connect, address, destroy } = useContractKit();
 
+ 
   return (
     <Box>
       <Flex
@@ -83,27 +84,28 @@ export default function NavBar() {
             direction={"row"}
             spacing={6}
             display={{ base: "none", md: "flex" }}
+       
           >
-            <Button
+            {/* <Button
               fontSize={"md"}
               fontWeight={600}
               variant={"link"}
               display={{ base: "none", md: "inline-flex" }}
             >
-              {/* <NextLink href="/campaign/new">Create Campaign</NextLink> */}
-            </Button>
-            <Button
+              <NextLink href="/campaign/new">Create Campaign</NextLink>
+            </Button> */}
+            {/* <Button
               fontSize={"md"}
               fontWeight={600}
               variant={"link"}
               display={{ base: "none", md: "inline-flex" }}
             >
-              {/* <NextLink href="/#howitworks"> How it Works</NextLink> */}
-            </Button>
+              <NextLink href="/#howitworks"> How it Works</NextLink>
+            </Button> */}
 
-            {address ? (
+            {/* {address ? (
               <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                <MenuButton as={Button}  rightIcon={<ChevronDownIcon />}>
                   {address}
                 </MenuButton>
                 <MenuList>
@@ -116,7 +118,7 @@ export default function NavBar() {
             ) : (
               <div>
                 <Button
-                  display={{ base: "none", md: "inline-flex" }}
+                  // display={{ base: "none", md: "inline-flex" }}
                   fontSize={"md"}
                   fontWeight={600}
                   color={"white"}
@@ -126,11 +128,12 @@ export default function NavBar() {
                     bg: "teal.300",
                   }}
                   onClick={connect}
+                 
                 >
                   Connect Wallet{" "}
                 </Button>
               </div>
-            )}
+            )} */}
 
             <DarkModeSwitch />
           </Stack>

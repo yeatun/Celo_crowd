@@ -11,7 +11,10 @@ import "@syncfusion/ej2-lists/styles/material.css";
 import "@syncfusion/ej2-inputs/styles/material.css";
 import "@syncfusion/ej2-popups/styles/material.css";
 import "@syncfusion/ej2-react-calendars/styles/material.css";
-
+import FrontPage from "../components/FrontPage";
+// import Footer from './../components/Footer';
+// import Posts from "../components/Posts";
+import Posts from './../components/Posts';
 
 const theme = extendTheme({
   fonts: {
@@ -40,8 +43,12 @@ function MyApp({ Component, pageProps }) {
           }}
         >
           <NavBar />
+          <FrontPage></FrontPage>
+          <Posts></Posts>
           {/* <Component {...pageProps} /> */}
+          {/* <Footer /> */}
          {" "}
+        
         </ContractKitProvider>
       </ChakraProvider>
     </>
