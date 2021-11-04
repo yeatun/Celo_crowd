@@ -49,6 +49,16 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
   
   export default function FrontPage() {
     const { connect, address, destroy } = useContractKit();
+
+    async function exportCSV(userAddress){
+      console.log("This is a test");
+      console.log(userAddress);
+      data = await fetch (
+        `https://alfajores-blockscout.celo-testnet.org/api?module=account&action=tokentx&address=${userAddress}`
+    )
+    .then(res=>res.json())
+    }
+
     return (
       <Box
      marginTop={300}
@@ -98,6 +108,10 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
                   <MenuItem onClick={destroy}>
                     {" "}
                     Disconnect Wallet{" "}
+                  </MenuItem>
+                  <MenuItem onClick={async () => exportCSV(address)}>
+                    {" "}
+                    Export CSV{" "}
                   </MenuItem>
                 </MenuList>
               </Menu>
